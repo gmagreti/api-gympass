@@ -30,11 +30,11 @@ describe('Register Use Case', () => {
       email: 'johndoe@example.com',
       password: '123456',
     })
+
     const isPasswordCorrectlyHashed = await compare(
       '123456',
       user.password_hash,
     )
-
     expect(isPasswordCorrectlyHashed).toBe(true)
   })
 
@@ -47,7 +47,7 @@ describe('Register Use Case', () => {
       password: '123456',
     })
 
-    expect(() =>
+    await expect(() =>
       sut.execute({
         name: 'John Doe',
         email,
